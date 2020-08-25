@@ -1,6 +1,9 @@
 {
   "name": "spring_rain",
   "version": "0.0.1",
+  "engines": {
+    "node": "14.4.0"
+  },
   "description": "",
   "main": "server.js",
   "type": "module",
