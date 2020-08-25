@@ -1,5 +1,7 @@
 import Koa from 'koa';
 import Router from 'koa-router';
+import bodyParser from 'koa-bodyparser';
+import contactRouter from './routes.js';
 
 const app = new Koa();
 const router = new Router();
@@ -9,7 +11,10 @@ router
     })
 
 app
-  .use(router.routes())
+    .use(bodyParser())
+    .use(router.routes())
     .use(router.allowedMethods())
+    .use(contactRouter.routes())
+    .use(contactRouter.allowedMethods());
 
 app.listen(3000);
