@@ -17,7 +17,7 @@ const Contact = database.define('Contact', {
         allowNull: false,
         validate: {
             notNull: true,
-            validatePhone: value => /^(+88)?01[0-9]{9}$/.text(value)
+            validatePhone: value => /^(\+88)?01\d{9}$/.test(value)
         }
     },
     mobileNumber: {

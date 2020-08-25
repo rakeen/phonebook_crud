@@ -10,7 +10,7 @@ const contactRouter = new Router({ prefix: '/api/v1' })
  * complicated.
  */
 contactRouter.get('/contacts', async (ctx, next) => {
-    const isMobileNumber = mobileNumber => /^(+88)?01[0-9]{9}$/.text(mobileNumber);
+    const isMobileNumber = mobileNumber => /^(\+88)?01\d{9}$/.test(mobileNumber);
     const condition = {};
     const mobileNumber = ctx.request?.query?.mobileNumber;
     if (isMobileNumber(mobileNumber)) condition.mobileNumber = mobileNumber;
