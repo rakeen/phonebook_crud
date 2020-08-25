@@ -1,9 +1,9 @@
 {
   "name": "spring_rain",
   "version": "0.0.1",
-  "type": "module",
   "description": "",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,6 +21,9 @@
   "homepage": "https://github.com/rakeen/spring_rain#readme",
   "dependencies": {
     "koa": "^2.13.0",
-    "koa-router": "^9.4.0"
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^9.4.0",
+    "sequelize": "^6.3.4",
+    "sqlite3": "^5.0.0"
   }
 }

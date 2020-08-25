@@ -3,13 +3,13 @@ import Router from 'koa-router';
 
 const app = new Koa();
 const router = new Router();
+router
+    .get('/', ctx => {
+        ctx.body = 'Hello koa!';
+    })
 
 app
   .use(router.routes())
-  .use(router.allowedMethods());
-
-router.get('/', (ctx, next) => {
-    ctx.body = 'Hello koa!';
-});
+    .use(router.allowedMethods())
 
 app.listen(3000);
