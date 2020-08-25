@@ -17,4 +17,4 @@ app
     .use(contactRouter.routes())
     .use(contactRouter.allowedMethods());
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
