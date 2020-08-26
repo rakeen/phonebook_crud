@@ -1,1 +1,1 @@
-web: cd q01 && npm i && npm run build && cd .. && npm run start:prod
+web: npm run start:prod
