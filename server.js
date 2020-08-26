@@ -17,4 +17,6 @@ app
     .use(contactRouter.routes())
     .use(contactRouter.allowedMethods());
 
-app.listen(process.env.PORT || 3000);
+const server = app.listen(process.env.PORT || 3001);
+
+export { server };
