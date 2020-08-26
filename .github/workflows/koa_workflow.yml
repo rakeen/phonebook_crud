@@ -26,9 +26,12 @@ jobs:
     needs: test
     if: github.ref == 'refs/heads/master'
     steps:
+    - uses: actions/checkout@v2
     - name: Build Q01
       working-directory: ./q01  
-      run: npm run build
+      run: |
+        npm i
+        npm run build
     - name: Deploy heroku
       uses: akhileshns/heroku-deploy@v3.4.6
       with:
