@@ -27,10 +27,8 @@ jobs:
     if: github.ref == 'refs/heads/master'
     steps:
     - name: Build Q01
-      run: |
-        cd q01
-        npm run build
-        cd ..
+      working-directory: ./q01  
+      run: npm run build
     - name: Deploy heroku
       uses: akhileshns/heroku-deploy@v3.4.6
       with:
