@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 
+/* eslint-disable no-undef */
 const factorial = n => {
   let ans = 1, i = 1;
   if (typeof BigInt === 'function') {
