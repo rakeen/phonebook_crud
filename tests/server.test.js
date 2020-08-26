@@ -23,7 +23,18 @@ describe('Contact Create', function () {
             .set('Accept', 'application/json')
             .expect(201);
     });
+    it('should handle bad input', async function () {
+        const payload = {
+            error: "Lorem Error",
+        };
+        const response = await request(server)
+            .post(`${API_URL_PREFIX}/contacts`)
+            .send(payload)
+            .set('Accept', 'application/json')
+            .expect(400); // Bad Request
 });
+});
+
 describe('Contact Get', function () {
     it('should return contact details given contact id', async function () {
         const contact = {
@@ -42,6 +53,25 @@ describe('Contact Get', function () {
         // mobileNumber search can return multiple results
         expect(response.body[0]?.contactId).toBe(contactId);
     });
+    it('should return empty result when no mobile number match is found', async function () {
+        const response = await request(server)
+            .get(`${API_URL_PREFIX}/contacts?mobileNumber=123`)
+            .expect(200);
+        expect(response.body?.length).toBe(0);
+    });
+    it('should return all contacts when random query param is given as input', async function () {
+        const response = await request(server)
+            .get(`${API_URL_PREFIX}/contacts?random=123`)
+            .expect(200);
+        expect(response.body?.length).toBe(2);
+    });
+    it('should return all contacts', async function () {
+        const response = await request(server)
+            .get(`${API_URL_PREFIX}/contacts`)
+            .expect(200);
+        expect(response.body?.length).toBe(2);
+    });
+});
 describe('Contact Delete', function () {
     it('should delete a contact', async function () {
         const contact = {
