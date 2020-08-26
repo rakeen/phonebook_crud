@@ -1,10 +1,16 @@
 import Koa from 'koa';
 import Router from 'koa-router';
 import bodyParser from 'koa-bodyparser';
+import serve from 'koa-static';
+import mount from 'koa-mount';
+import path from 'path';
 import contactRouter from './routes.js';
 
 const app = new Koa();
 const router = new Router();
+
+app.use(mount('/', serve(path.resolve('./q01/build/'))));
+
 app.use(async (ctx, next) => {
     /**
      * @see https://github.com/koajs/koa/wiki/Error-Handling#catching-downstream-errors
@@ -20,9 +26,10 @@ app.use(async (ctx, next) => {
         else ctx.app.emit('error', err, ctx);
     }
 });
+
 router
-    .get('/', ctx => {
-        ctx.body = 'Hello koa!';
+    .get('/healthcheck', ctx => {
+        ctx.body = 'koa up and running!';
     })
 
 app
@@ -31,6 +38,7 @@ app
     .use(router.allowedMethods())
     .use(contactRouter.routes())
     .use(contactRouter.allowedMethods());
+
 
 const server = app.listen(process.env.PORT || 3001);
 
