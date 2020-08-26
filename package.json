@@ -8,6 +8,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
+    "start": "NODE_END=development node server.js",
+    "start:prod": "NODE_END=production node server.js",
     "seed": "node contacts.seed.js"
   },
   "repository": {
