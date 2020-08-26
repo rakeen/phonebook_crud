@@ -3,7 +3,7 @@ import './App.css';
 
 const factorial = n => {
   let ans = 1, i = 1;
-  if (BigInt) {
+  if (typeof BigInt === 'function') {
     n = BigInt(n);
     ans = BigInt(1);
     i = BigInt(1);
