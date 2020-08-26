@@ -10,24 +10,21 @@ const contactRouter = new Router({ prefix: '/api/v1' })
  * complicated.
  */
 contactRouter.get('/contacts', async (ctx, next) => {
-    const isMobileNumber = mobileNumber => /^(\+88)?01\d{9}$/.test(mobileNumber);
-    const condition = {};
     const mobileNumber = ctx.request?.query?.mobileNumber;
-    if (isMobileNumber(mobileNumber)) condition.mobileNumber = mobileNumber;
-
+    const whereCondition = mobileNumber ? { "mobileNumber": mobileNumber } : {}
     const users = await Contact.findAll({
         attributes: ['contactId', 'name', 'mobileNumber'], // @info we don't want to leak primary key
         where: {
-            ...condition
+            ...whereCondition
         }
     });
     ctx.body = users;
 });
 contactRouter.post('/contacts', async (ctx, next) => {
-    await database.sync();
-    const contact = await Contact.create(ctx.request.body);
+    const response = await Contact.create(ctx.request.body);
+    const { mobileNumber, name, contactId } = response.toJSON();
     ctx.status = 201;
-    ctx.body = ctx.request.body;
+    ctx.body = { mobileNumber, name, contactId };
     // @todo handle bad req error
 });
 contactRouter.delete('/contacts/:contactId', async ctx => {
@@ -45,7 +42,9 @@ contactRouter.patch('/contacts/:contactId', async ctx => {
             contactId: ctx.params.contactId
         }
     });
-    if (response > 0) ctx.status = 204;
+
+    // @see https://sequelize.org/master/class/lib/model.js~Model.html#static-method-update:~:text=The%20first%20element%20is%20always%20the%20number%20of%20affected%20rows
+    if (response[0] > 0) ctx.status = 204;
     else ctx.status = 404;
 });
 
