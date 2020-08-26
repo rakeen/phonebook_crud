@@ -32,7 +32,7 @@ describe('Contact Create', function () {
             .send(payload)
             .set('Accept', 'application/json')
             .expect(400); // Bad Request
-});
+    });
 });
 
 describe('Contact Get', function () {
@@ -72,6 +72,7 @@ describe('Contact Get', function () {
         expect(response.body?.length).toBe(2);
     });
 });
+
 describe('Contact Delete', function () {
     it('should delete a contact', async function () {
         const contact = {
@@ -93,3 +94,31 @@ describe('Contact Delete', function () {
             .expect(404);
     });
 });
+
+describe('Contact Patch', function () {
+    it('should update a contact', async function () {
+        const contact = {
+            name: "Lorem 4",
+            mobileNumber: "01732422622"
+        };
+        const contactResponse = await request(server)
+            .post(`${API_URL_PREFIX}/contacts`)
+            .send(contact);
+        const contactId = contactResponse?.body?.contactId;
+
+        await request(server)
+            .patch(`${API_URL_PREFIX}/contacts/${contactId}`)
+            .send({ name: "Torem 4" })
+            .expect(204);
+    });
+
+    it('should return not found when updating invalid contact', async function () {
+        await request(server)
+            .patch(`${API_URL_PREFIX}/contacts/11`)
+            .send({ pmobileNumber: "394" })
+            .expect(404);
+    });
+});
+
+// gracefully close server
+afterAll(async () => await server.close());
