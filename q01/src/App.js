@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import './App.css';
 
 const factorial = n => {
-  let ans = 1;
-  for (let i = 1; i <= n; i++) ans *= i;
+  let ans = 1, i = 1;
+  if (BigInt) {
+    n = BigInt(n);
+    ans = BigInt(1);
+    i = BigInt(1);
+  }
+  for (; i <= n; i++) ans *= i;
   return ans;
 };
 
