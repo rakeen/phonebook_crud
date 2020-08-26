@@ -31,7 +31,7 @@ describe('Contact Create', function () {
             .post(`${API_URL_PREFIX}/contacts`)
             .send(payload)
             .set('Accept', 'application/json')
-            .expect(400); // Bad Request
+            .expect(422);
     });
 });
 
