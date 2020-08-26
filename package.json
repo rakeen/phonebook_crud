@@ -16,6 +16,11 @@
     "coverage:nyc": "nyc --include-all-sources --all npm run test",
     "seed": "node contacts.seed.js"
   },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>/q01/"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://rakeen@github.com/rakeen/spring_rain.git"
