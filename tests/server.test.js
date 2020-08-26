@@ -42,4 +42,24 @@ describe('Contact Get', function () {
         // mobileNumber search can return multiple results
         expect(response.body[0]?.contactId).toBe(contactId);
     });
+describe('Contact Delete', function () {
+    it('should delete a contact', async function () {
+        const contact = {
+            name: "Lorem 3",
+            mobileNumber: "01732422222"
+        };
+        const contactResponse = await request(server)
+            .post(`${API_URL_PREFIX}/contacts`)
+            .send(contact);
+        const contactId = contactResponse?.body?.contactId;
+
+        await request(server)
+            .delete(`${API_URL_PREFIX}/contacts/${contactId}`)
+            .expect(204);
+    });
+    it('should return 404 if contact not found', async function () {
+        await request(server)
+            .delete(`${API_URL_PREFIX}/contacts/11`)
+            .expect(404);
+    });
 });
