@@ -25,7 +25,6 @@ contactRouter.post('/contacts', async (ctx, next) => {
     const { mobileNumber, name, contactId } = response.toJSON();
     ctx.status = 201;
     ctx.body = { mobileNumber, name, contactId };
-    // @todo handle bad req error
 });
 contactRouter.delete('/contacts/:contactId', async ctx => {
     const response = await Contact.destroy({

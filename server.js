@@ -10,6 +10,8 @@ const app = new Koa();
 const router = new Router();
 
 app.use(mount('/', serve(path.resolve('./q01/build/'))));
+app.use(mount('/docs', serve('./docs/swagger')));
+
 
 app.use(async (ctx, next) => {
     /**

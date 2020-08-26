@@ -1,0 +1,161 @@
+openapi: 3.0.3
+info:
+  title: Contacts API
+  description: 'Contacts CRUD API made for **Spring Rain** interview'
+  contact:
+    email: ping@rakeen.gq
+  license:
+    name: wtfpl
+    url: http://www.wtfpl.net/txt/copying
+  version: 0.3.0
+# externalDocs:
+#   description: Find out more about Swagger
+#   url: http://swagger.io
+servers:
+- url: https://stormy-ravine-87984.herokuapp.com/api/v1
+- url: http://petstore.swagger.io/v2
+tags:
+- name: contacts
+  description: Contact details
+paths:
+  /contacts:
+    get:
+      tags:
+      - contacts
+      summary: Find Contacts
+      description: Show all contacts or search contacts by mobile number
+      operationId: findContacts
+      parameters:
+      - name: mobileNumber
+        in: query
+        description: Mobile Number should be true for this regex `/^(\+88)?01\d{9}$/`
+        required: false
+        style: form
+        explode: true
+        schema:
+            type: string
+        # https://swagger.io/docs/specification/adding-examples/
+        examples:
+          fullFormat:
+            value: "+8801730000000"
+          normalFormat:
+            value: "01730000000"
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContactResponse'
+        404:
+          description: Contact not found
+          content: {}
+    post:
+      tags:
+      - contacts
+      summary: Create a new contact
+      operationId: addContact
+      requestBody:
+        description: Add new contact
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactPayload'
+        required: true
+      responses:
+        201:
+          description: Created contact object with `contactId`
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactResponse'
+        422:
+          description: Validation Failed
+          content: {}
+  /contacts/{contactId}:
+    patch:
+      tags:
+      - contacts
+      summary: Update an existing contact
+      description: Update an existing contact using its `contactId`
+      parameters:
+      - name: contactId
+        in: path
+        description: Contact id to update
+        required: true
+        schema:
+          type: string
+          description: contact id which is a *uuid4* object as a string
+          example: "12345678-1234-5678-1234-567812345678"
+      requestBody:
+        description: Put either name or mobileNumber or both
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                # https://stackoverflow.com/a/53830382/4437655
+                minProperties: 1
+                mobileNumber:
+                  type: string
+                name:
+                  type: string
+            examples:
+              name:
+                value: {name: "lorem ipsum"}
+              mobileNumber:
+                value: {mobileNumber: "01600000000"}
+              both:
+                value: {name: "lorem ipsum", mobileNumber: "01600000000"}
+        required: true
+      responses:
+        204:
+          description: No Content
+          content: {}
+        404:
+          description: Contact not found
+          content: {}
+    delete:
+      tags:
+      - contacts
+      summary: Deletes a contact
+      operationId: deleteContact
+      parameters:
+      - name: contactId
+        in: path
+        description: Contact id to delete
+        required: true
+        schema:
+          type: string
+          description: contact id which is a *uuid4* object as a string
+          example: "12345678-1234-5678-1234-567812345678"
+      responses:
+        204:
+          description: No Content. Successfully deleted
+          content: {}
+        404:
+          description: Contact not found
+          content: {}
+  
+components:
+  schemas:
+    ContactResponse:
+      type: object
+      properties:
+        contactId:
+          type: string
+          description: UUID4
+        mobileNumber:
+          type: string
+          example: "01800000000"
+        name:
+          type: string
+    ContactPayload:
+      type: object
+      properties:
+        mobileNumber:
+          type: string
+        name:
+          type: string
