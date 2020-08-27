@@ -15,6 +15,8 @@
 
 🟢 Live URL: [https://stormy-ravine-87984.herokuapp.com/](https://stormy-ravine-87984.herokuapp.com/)  
 
+📚 doc: [https://stormy-ravine-87984.herokuapp.com/docs/swagger.html](https://stormy-ravine-87984.herokuapp.com/docs/swagger.html)  
+
 Note that it might take some time to load the page since it is a free instance.
 
 ---
@@ -77,6 +79,8 @@ The application should be runing on port 80.
 An intereactive API documentation is available at `/docs/swagger.html` after running the full system.  
 
 This project uses [OpenAPI](https://www.openapis.org/) specification to build the API contracts.
+
+Additionally the live doc is at: [https://stormy-ravine-87984.herokuapp.com/docs/swagger.html](https://stormy-ravine-87984.herokuapp.com/docs/swagger.html)
 
 ## Seed data 📊
 
