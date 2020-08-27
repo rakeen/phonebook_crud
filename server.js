@@ -42,6 +42,9 @@ app
     .use(contactRouter.allowedMethods());
 
 
-const server = app.listen(process.env.PORT || 3001);
+const port = process.env.PORT || 3001;
+const server = app.listen(port, () => {
+    console.info(`🖥️  koa server started on port ${port}`);
+});
 
 export { server };
