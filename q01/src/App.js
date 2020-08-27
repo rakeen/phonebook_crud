@@ -10,22 +10,23 @@ const factorial = n => {
     i = BigInt(1);
   }
   for (; i <= n; i++) ans *= i;
-  return ans;
+  return ans.toString();
 };
 
 const App = () => {
   const [value, setValue] = useState();
   const [answer, setAnswer] = useState();
   const handleOnChange = e => setValue(e.target.value);
-  const handleOnClick = _ => setAnswer(factorial(value));
+  const handleOnClick = e => { e.preventDefault(); setAnswer(factorial(value)); };
   return (
     <div>
-      <h1>Factorial Calculator</h1>
-      <form>
+      <h1 id="info">Factorial Calculator</h1>
+      <form aria-describedby="info" onSubmit={handleOnClick}>
         <input
           type="number"
           placeholder="Enter a number..."
           value={value}
+          autoFocus
           onChange={handleOnChange}
         />
         <br />
