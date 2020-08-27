@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
 import './App.css';
 
+/**
+ * @todo Try webworker to offload task from main thread
+ * @todo Break the task and use `setTimeout()` to do the micro-tasks for a 
+ * small period of time(i.e 10ms) so that browser gets time to render other things.
+ */
 /* eslint-disable no-undef */
 const factorial = n => {
   let ans = 1, i = 1;
   if (typeof BigInt === 'function') {
-    n = BigInt(n);
-    ans = BigInt(1);
-    i = BigInt(1);
+    try {
+      n = BigInt(n);
+      ans = BigInt(1);
+      i = BigInt(1);
+    } catch{
+      return "";
+    }
   }
   for (; i <= n; i++) ans *= i;
   return ans.toString();

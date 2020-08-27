@@ -1,4 +1,8 @@
-<img src = './docs/artwork.svg' width="300" alt="artwork" />
+<header align="center">
+    <a href="https://undraw.co/">
+        <img src = './docs/artwork.svg' width="300" alt="artwork" />
+    </a>
+</header>
 
 # spring_rain
 
@@ -11,7 +15,21 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/heroku/node-js-getting-started)
 
-🟢 [https://stormy-ravine-87984.herokuapp.com/](https://stormy-ravine-87984.herokuapp.com/)  
+🟢 Live URL: [https://stormy-ravine-87984.herokuapp.com/](https://stormy-ravine-87984.herokuapp.com/)  
+
+Note that it might take some time to load the page since it is a free instance.
+
+---
+
+It is a take home project for a Full-stack Developer role at Spring Rain.  
+
+Task#01 is to make a react component that will take user input calculates the 
+factorial of it and render the result.  
+
+Task#02 is a simple CRUD application involving contacts. A contact has a name 
+and a valid Bangladeshi 🇧🇩 phone number. It needs to create new contact, 
+search existing contact by phone number or show all contacts, delete any contact
+and update an existing contact.  
 
 ## Build Instruction
 

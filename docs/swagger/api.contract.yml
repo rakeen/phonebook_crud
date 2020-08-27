@@ -63,6 +63,11 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ContactPayload'
+            examples:
+                contact1:
+                  value: { name: "Lorem 1", mobileNumber: "+8801730000000" }
+                contact2:
+                  value: { name: "Lorem 2", mobileNumber: "01730000000" }
         required: true
       responses:
         201:
