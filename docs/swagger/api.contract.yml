@@ -135,7 +135,7 @@ paths:
         schema:
           type: string
           description: contact id which is a *uuid4* object as a string
-          example: "12345678-1234-5678-1234-567812345678"
+          example: "8526c6e5-e3bc-4332-a8d0-369df8fb775d"
       responses:
         204:
           description: No Content. Successfully deleted
@@ -152,6 +152,7 @@ components:
         contactId:
           type: string
           description: UUID4
+          example: "8526c6e5-e3bc-4332-a8d0-369df8fb775d"
         mobileNumber:
           type: string
           example: "01800000000"
@@ -162,5 +163,7 @@ components:
       properties:
         mobileNumber:
           type: string
+          description: Valid Bangladeshi phone number. A string that satisfies this regex `/^(\+88)?01\d{9}$/`
+          example: "01800000000"
         name:
           type: string
