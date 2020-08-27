@@ -37,7 +37,10 @@ To start everything in one command:
 
 `npm run build && npm run start:prod`
 
-### To start the `Task#01`  
+### To start `Task#01`  
+
+[Task#01 source code](./q01/src/App.js)  
+
 
 ```sh
 cd ..
@@ -86,15 +89,20 @@ Additionally the live doc is at: [https://stormy-ravine-87984.herokuapp.com/docs
 
 In order to put dummy data first make sure the `koa` server is running and the dev dependencies are also installed.  
 
-```
+```sh
 npm i --only=dev
 npm run seed
 ```
+
+Since this is a simple project, in-memory sqlite3 database is used.  
 
 ## Tests 🚨
 
 To run tests for `Task#02`:  
 
-```
+```sh
 npm test
 ```
+
+It uses `jest` along with `supertest` to test the api routes. `jest` comes 
+with built-in `istanbul` package which handles test coverage reporting.  
