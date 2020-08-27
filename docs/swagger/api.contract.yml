@@ -7,7 +7,7 @@ info:
   license:
     name: wtfpl
     url: http://www.wtfpl.net/txt/copying
-  version: 0.3.0
+  version: 1.0.0
 # externalDocs:
 #   description: Find out more about Swagger
 #   url: http://swagger.io

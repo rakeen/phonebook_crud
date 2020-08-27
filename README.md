@@ -1,8 +1,6 @@
-<header align="center">
-    <a href="https://undraw.co/">
-        <img src = './docs/artwork.svg' width="300" alt="artwork" />
-    </a>
-</header>
+<a href="https://undraw.co/">
+    <img src = './docs/artwork.svg' width="300" alt="artwork" />
+</a>
 
 # spring_rain
 
@@ -31,7 +29,7 @@ and a valid Bangladeshi 🇧🇩 phone number. It needs to create new contact,
 search existing contact by phone number or show all contacts, delete any contact
 and update an existing contact.  
 
-## Build Instruction
+## Build Instruction 🔧
 
 To start everything in one command:  
 
@@ -74,11 +72,13 @@ Run the image:
 
 The application should be runing on port 80.  
 
-## API Docs
+## API Docs 📚
 
-An intereactive API documentation is available at `/docs/swagger.html` after running the full system.
+An intereactive API documentation is available at `/docs/swagger.html` after running the full system.  
 
-## Seed data
+This project uses [OpenAPI](https://www.openapis.org/) specification to build the API contracts.
+
+## Seed data 📊
 
 In order to put dummy data first make sure the `koa` server is running and the dev dependencies are also installed.  
 
@@ -87,7 +87,7 @@ npm i --only=dev
 npm run seed
 ```
 
-## Tests
+## Tests 🚨
 
 To run tests for `Task#02`:  
 
