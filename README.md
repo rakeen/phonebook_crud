@@ -2,7 +2,7 @@
     <img src = './docs/artwork.svg' width="300" alt="artwork" />
 </a>
 
-# spring_rain
+# phonebook CRUD
 
 [![Actions Status](https://github.com/rakeen/spring_rain/workflows/koa%20workflow/badge.svg)](https://github.com/rakeen/spring_rain/actions)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/rakeen/spring_rain)
@@ -19,14 +19,13 @@
 
 Note that it might take some time to load the page since it is a free instance.
 
----
+---  
 
-It is a take home project for a Full-stack Developer role at Spring Rain.  
 
 Task#01 is to make a react component that will take user input calculates the 
 factorial of it and render the result.  
 
-Task#02 is a simple CRUD application involving contacts. A contact has a name 
+Task#02 A simple CRUD application involving contacts. A contact has a name 
 and a valid Bangladeshi 🇧🇩 phone number. It needs to create new contact, 
 search existing contact by phone number or show all contacts, delete any contact
 and update an existing contact.  

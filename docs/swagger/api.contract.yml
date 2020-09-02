@@ -1,13 +1,13 @@
 openapi: 3.0.3
 info:
   title: Contacts API
-  description: 'Contacts CRUD API made for **Spring Rain** interview'
+  description: 'Contacts CRUD API'
   contact:
     email: ping@rakeen.gq
   license:
     name: wtfpl
     url: http://www.wtfpl.net/txt/copying
-  version: 1.0.0
+  version: 1.0.1
 # externalDocs:
 #   description: Find out more about Swagger
 #   url: http://swagger.io
